@@ -1,0 +1,126 @@
+﻿#jumbotronPost {
+    background-color: beige;
+    box-shadow: -3px 2px 17px black;
+    height: 15px;
+    width: 70%;
+    margin: auto;
+    border-radius: 25px;
+    line-height: 0.01;
+    max-height:330px;
+}
+
+#moodAndweather {
+    background-color: white;
+    width: 160px;
+    height: 200px;
+    border-radius: 25px;
+    float: right;
+    margin-top: 10px;
+    box-shadow: -2px 2px 16px black;
+}
+
+.lrmargin {
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.moveUp {
+    margin-top: -30px;
+    line-height: initial;
+}
+
+.grayBcg {
+    background-color: gray;
+}
+
+.beigeBcg {
+    background-color: beige;
+}
+
+.whiteBcg {
+    background-color: white;
+}
+
+.beige {
+    color: beige;
+}
+
+.gray {
+    color: gray;
+}
+
+.black {
+    color: #96CDCD;
+}
+
+.blue{
+    color:#0094ff;
+}
+
+.big{
+    font-size:18px;
+}
+
+.up {
+    margin-top: -15px;
+}
+
+#jumbotronPost:focus #jumbotronPost{
+    height:auto;
+}
+.row100 div {
+    height: 100%;
+}
+
+.emojiMargin {
+    margin-top: 10px;
+    margin-left: 1px;
+}
+
+#moodAndweather{
+    overflow: auto;
+    overflow-x: hidden;
+}
+#file-input {
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    filter: alpha(opacity=0); /* IE < 9 */
+    opacity: 0;
+    display: none;
+}
+
+.input-label {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+#mjestoZaSliku {
+    margin-left: 30%;
+}
+
+#Dropzone {
+    border-color: rgba(102, 102, 102, 0.18);
+    width: 100%;
+    border-radius: 25px;
+}
+
+#dropText {
+    text-align: center;
+    margin-top: 10%;
+}
+
+.inlineflex {
+    display: inline-flex;
+}
+

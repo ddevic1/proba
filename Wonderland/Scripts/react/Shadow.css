@@ -1,0 +1,21 @@
+﻿.shadow {
+    box-shadow: -2px 3px 12px black;
+    border: none;
+}
+.body {
+    background-image: url(http://www.flytrip.gr/wp-content/uploads/2017/08/PisaTower-14.jpg);
+}
+.loginForm input[type=submit] {
+    background-color: beige;
+    margin-top: 10px;
+    color: #000;
+}
+#formadiv {
+    border-left: 0px solid beige;
+    height: auto;
+    box-shadow: -4px 0px 4px #c9c9b8;
+}
+#formadiv1 {
+    margin-top: 10%;
+    float: right;
+}

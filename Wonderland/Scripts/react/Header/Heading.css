@@ -1,0 +1,12 @@
+﻿#jumbotron {
+    background-color: transparent;
+    margin-top: -40px;
+    box-shadow: -3px 2px 17px black;
+}
+h2 {
+    font-family: 'PT Serif', sans-serif;
+    font-weight: 500;
+    font-size: 70px;
+    color: beige;
+    margin-left: 30%;
+}

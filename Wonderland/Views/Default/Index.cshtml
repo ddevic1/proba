@@ -1,0 +1,40 @@
+﻿
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="content">
+    <div class="row" id="gornji"></div>
+    <div class="row">
+        <div id="donji">
+            <div id="lijevi" class="col-md-6">
+
+            </div>
+            <div id="desni" class="col-md-6">
+        
+            </div>
+        </div>
+    </div>
+    <div id="root"></div>
+</div>
+
+@section scripts{
+
+    <script src="~/Scripts/react/dist/bundle.js"></script>
+
+}
+
+@section head{
+    <link href="~/Scripts/react/common.css" rel="stylesheet" />
+    <link href="~/Scripts/react/Registracija/Register.css" rel="stylesheet" />
+    <link href="~/Scripts/react/Shadow.css" rel="stylesheet" />
+    <link href="~/Scripts/react/SearchBar/SearchBar.css" rel="stylesheet" />
+    <link href="~/Scripts/react/HeaderPocetna/HeaderPocetna.css" rel="stylesheet" />
+    <link href="~/Scripts/react/Header/Heading.css" rel="stylesheet" />
+    <link href="~/Scripts/react/Post/Post.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+}

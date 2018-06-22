@@ -1,0 +1,29 @@
+﻿#jumbotronPoc {
+    background-color: transparent;
+    margin-top: -65px;
+    box-shadow: -3px 2px 17px black;
+    height: 15px;
+}
+
+.profile {
+    font-size: 2em;
+    text-align: center;
+    line-height: 0.5;
+    color: beige;
+    float:right;
+}
+
+.show1 {
+    font-size: 14px;
+    display:none;
+    font-weight:bold;
+    color:beige;
+}
+
+.profile:hover .show1{
+    display:inline;
+}
+
+.material-icons {
+    font-size: 30px;
+}

@@ -1,0 +1,115 @@
+﻿
+.alignleft {
+    float: left;
+    margin-right: 15px;
+}
+
+.alignright {
+    float: right;
+    margin-left: 15px;
+}
+
+.aligncenter {
+    display: block;
+    margin: 0 auto 15px;
+}
+
+a:focus {
+    outline: 0 solid
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.fix {
+    overflow: hidden
+}
+
+
+.search-box {
+    margin: 80px auto;
+    position: absolute;
+}
+
+.caption {
+    margin-bottom: 50px;
+}
+
+.loginForm input[type=text], .loginForm input[type=password] {
+    margin-bottom: 10px;
+    box-shadow: -2px 3px 12px rgba(0, 0, 0, 0.78);
+    border: none;
+}
+
+.loginForm input[type=submit] {
+    
+    font-weight: 700;
+    box-shadow: -2px 3px 12px black;
+
+}
+
+
+#pswd_info {
+    background: beige none repeat scroll 0 0;
+    color: #fff;
+    left: 20px;
+    position: absolute;
+}
+
+    #pswd_info h4 {
+        background: darkgray none repeat scroll 0 0;
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0;
+        padding: 17px 0;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    #pswd_info ul {
+        list-style: outside none none;
+    }
+
+        #pswd_info ul li {
+            padding: 10px 5px;
+        }
+
+
+
+.valid {
+    background: rgba(0, 0, 0, 0)  no-repeat scroll 2px 6px;
+    color: green;
+    line-height: 21px;
+    padding-left: 22px;
+}
+
+.invalid {
+    background: rgba(0, 0, 0, 0) no-repeat scroll 2px 6px;
+    color: red;
+    line-height: 21px;
+    padding-left: 22px;
+}
+
+
+#pswd_info::before {
+    background: beige none repeat scroll 0 0;
+    content: "";
+    height: 25px;
+    left: -13px;
+    margin-top: -12.5px;
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    width: 25px;
+}
+
+#pswd_info {
+    display: none;
+    width: 250px;
+}
+#formadiv {
+    border-left: 5px solid beige;
+    height: auto;
+}

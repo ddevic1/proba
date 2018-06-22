@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WonderlandDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Friends">
+    <Key>
+      <PropertyRef Name="FriendsId" />
+    </Key>
+    <Property Name="FriendsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserFK" Type="Int32" Nullable="false" />
+    <Property Name="FriendFK" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="WonderlandDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Friends" EntityType="Self.Friends" />
+  </EntityContainer>
+</Schema>

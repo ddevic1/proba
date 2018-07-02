@@ -22,10 +22,8 @@ class Login extends Component {
             this.setState({
                 users: data
             });
-           // console.log(this.state.users);
         }.bind(this));
-
-        //  console.log({ "ComponentDidMount": this.state });
+        
     }
 
     handleLoginSubmit(e) {
@@ -33,13 +31,13 @@ class Login extends Component {
        
         for (var i = 0; i < this.state.users.length; i++) {
             if ((this.state.users[i].Email === this.refs.email.value || this.state.users[i].Name === this.refs.email.value) && this.state.users[i].Password === this.refs.pass.value) {
-                console.log(this.state.users[i]);
+      
                $.get('/friends/' + this.state.users[i].UserId, function (data) {
                     this.setState({
                         friends: data
                     });
-                     console.log({ "friendsLogin": this.state.friends });
-                     history.push('/user/home', { detail: this.state.users[i], friendsL: data });
+                  // console.log({ "friendsLogin": this.state.friends });
+                   history.push('/user/home', { detail: this.state.users[i], friendsL: data, allUsers: this.state.users });
                 }.bind(this));
                
                 break;

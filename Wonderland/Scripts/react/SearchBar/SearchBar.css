@@ -5,7 +5,7 @@
     box-shadow: -2px 2px 10px #fbeed5;
     height:30px;
     outline:none;
-    background-color:beige;
+    background-color: white;
 }
 
 #filterTextInput:focus{
@@ -17,22 +17,24 @@ th {
 }
 table {
     border-collapse: separate;
-    width: 100%;
-    background-color: transparent;
+    width: 93%;
+    background-color: white;
     box-shadow: -2px 2px 10px black;
     border-radius: 15px;
-    color:beige;
+    color: gray;
 }
 
-td,tr {
-    border: solid 1px beige;
-    border-radius:25px;
+td, tr {
+    border-top: solid 2px transparent;
+    border-image: linear-gradient(to right, beige 0%,gray 50%, beige 100%);
+    border-image-slice: 1;
 }
 
 #SearchBarTable {
     border-spacing: 2px;
-    background-color: transparent;
+    background-color: white;
     position: absolute;
+    z-index: 1;
 }
 
 #image{

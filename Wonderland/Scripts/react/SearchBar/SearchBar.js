@@ -7,6 +7,9 @@ var CategoryRow = React.createClass({
 });
 
 var ResultRow = React.createClass({
+    handleRowClick: function () {
+        this.props.onClicked(this.props.item.name);
+    },
     render: function () {
         var name = this.props.item.stocked ?
             this.props.item.name :
@@ -20,7 +23,7 @@ var ResultRow = React.createClass({
             image = "https://stevex.sk/wp-content/uploads/2016/03/Graphicloads-100-Flat-Contact.png";
         }
         return (
-            <tr>
+            <tr onClick={this.handleRowClick}>
 
                 <td> <img id="image" src={image} /> {name}  </td>
             </tr>
@@ -38,9 +41,9 @@ var ProductTable = React.createClass({
                 return;
             }
             if (item.category !== lastCategory) {
-                rows.push(<CategoryRow category={item.category} key={item.category} />);
+                rows.push(<CategoryRow category={item.category} key={item.category}  />);
             }
-            rows.push(<ResultRow item={item} key={item.name} />);
+            rows.push(<ResultRow item={item} key={item.name} onClicked={this.props.onClick1} />);
             lastCategory = item.category;
         }.bind(this));
         return (
@@ -58,8 +61,12 @@ var SearchBar = React.createClass({
         );
     },
     render: function () {
+        var wid = "100%";
+        if (this.props.loc === "post")
+            wid = "40%";
+        console.log(this.props.loc);
         return (
-            <form>
+            <form style={{ display: "inline" }}>
                 <input
                     type="text"
                     placeholder="Search..."
@@ -67,6 +74,7 @@ var SearchBar = React.createClass({
                     ref="filterTextInput"
                     id="filterTextInput"
                     onChange={this.handleChange}
+                    style={{ width: wid, display: "inline" }}
                 />
             
             </form>
@@ -83,10 +91,14 @@ var FilterableProductTable = React.createClass({
     },
 
     handleUserInput: function (filterText) {
+        var items = [];
+        this.props.friends1.forEach(function (friend) {
+            items.push({ category: 'People', image: '"' + 'https://cdn2.iconfinder.com/data/icons/national-and-politican-pointers-of-countries/154/country-pointer-geo-location-japan-512.png' + '"', stocked: true, name: friend.Name + " " + friend.Surname })
+        });
         if (filterText.length > 0) {
             this.setState({
                 filterText: filterText,
-                x: this.props.items
+                x: items
             });
         }
         else {
@@ -97,18 +109,23 @@ var FilterableProductTable = React.createClass({
         }
     },
 
+
+
     render: function () {
+        console.log(this.props.friends1);
         return (
-            <div id="divmove">
+            <div id="divmove" style={{ display: "inline"}}>
                 <SearchBar
                     filterText={this.state.filterText}
                     onUserInput={this.handleUserInput}
+                    loc={this.props.loc}
                 />
                 <div id="pokusaj">
                 </div>
                 <ProductTable
                     items={this.state.x}
                     filterText={this.state.filterText}
+                    onClick1={this.props.getClickedItem}
                 />
             </div>
         );

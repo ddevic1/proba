@@ -106,3 +106,29 @@ p {
 input[type="file"] {
     display: none;
 }
+
+#jumbotronPost {
+    background-color: beige;
+    box-shadow: -3px 2px 17px black;
+    height: 15px;
+    width: 70%;
+    margin: auto;
+    border-radius: 25px;
+    line-height: 0.01;
+    max-height: 370px;
+}
+
+#jumbotronPost1 {
+    background-color: beige;
+    box-shadow: -3px 2px 17px black;
+    height: 15px;
+    width: 70%;
+    margin: auto;
+    border-radius: 25px;
+    line-height: 0.01;
+    max-height: 370px;
+}
+
+.post{
+    border-radius: 5px;
+}

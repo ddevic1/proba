@@ -25,9 +25,7 @@ C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.Console.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.Diagnostics.Process.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.IO.FileSystem.DriveInfo.dll
-C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.IO.Pipes.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.Reflection.Metadata.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.Security.AccessControl.dll
@@ -199,11 +197,14 @@ C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Extensions.Opti
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Extensions.Primitives.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Extensions.WebEncoders.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Net.Http.Headers.dll
+C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Owin.Cors.dll
+C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Owin.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Win32.Registry.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\MsieJavaScriptEngine.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Newtonsoft.Json.Bson.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Newtonsoft.Json.dll
+C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Owin.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\React.AspNet.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\React.AspNet.Middleware.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\React.Core.dll
@@ -216,6 +217,7 @@ C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\System.Security.AccessCon
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\System.Security.Cryptography.Xml.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\System.Security.Principal.Windows.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\System.Text.Encodings.Web.dll
+C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\System.Web.Cors.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\System.Web.Helpers.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\System.Web.Http.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\System.Web.Http.WebHost.dll
@@ -279,6 +281,8 @@ C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Extensions.Opti
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Extensions.Primitives.xml
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Extensions.WebEncoders.xml
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Net.Http.Headers.xml
+C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Owin.xml
+C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Microsoft.Owin.Cors.xml
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\MsieJavaScriptEngine.xml
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Newtonsoft.Json.xml
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\Newtonsoft.Json.Bson.xml
@@ -308,5 +312,7 @@ C:\Users\Delila\Source\Repos\Wonderland\Wonderland\obj\Debug\Wonderland.csproj.C
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\obj\Debug\Wonderland.csproj.CopyComplete
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\obj\Debug\Wonderland.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\obj\Debug\Wonderland.pdb
+C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\bin\roslyn\System.Collections.Immutable.dll
 C:\Users\Delila\Source\Repos\Wonderland\Wonderland\obj\Debug\Wonderland.csprojResolveAssemblyReference.cache

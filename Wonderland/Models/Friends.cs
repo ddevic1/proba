@@ -17,5 +17,8 @@ namespace Wonderland.Models
         public int FriendsId { get; set; }
         public int UserFK { get; set; }
         public int FriendFK { get; set; }
+    
+        public virtual User User { get; set; }
+        public virtual User User1 { get; set; }
     }
 }

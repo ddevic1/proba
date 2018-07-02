@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a5642fb3e88140a9b95c22c1a42a1c6f" Name="Diagram1">
+        <EntityTypeShape EntityType="WonderlandDBModel.Friends" Width="1.5" PointX="5.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WonderlandDBModel.Posts" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WonderlandDBModel.User" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <AssociationConnector Association="WonderlandDBModel.FK_Friends_ToUser" ManuallyRouted="false" />
+        <AssociationConnector Association="WonderlandDBModel.FK_Friends_ToUserFriend" ManuallyRouted="false" />
+        <AssociationConnector Association="WonderlandDBModel.FK_Posts_ToUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

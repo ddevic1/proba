@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WonderlandDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Friends">
+    <Key>
+      <PropertyRef Name="FriendsId" />
+    </Key>
+    <Property Name="FriendsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserFK" Type="int" Nullable="false" />
+    <Property Name="FriendFK" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Posts">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Sequence" Type="varchar" MaxLength="1000" />
+    <Property Name="ImageURL" Type="varchar" MaxLength="100" />
+    <Property Name="Weather" Type="varchar" MaxLength="15" />
+    <Property Name="Location" Type="varchar" MaxLength="100" />
+    <Property Name="UserFK" Type="int" Nullable="false" />
+    <Property Name="Lat" Type="float" />
+    <Property Name="Lng" Type="float" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="BirthDate" Type="date" />
+  </EntityType>
+  <Association Name="FK_Friends_ToUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Friends" Type="Self.Friends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="UserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Friends_ToUserFriend">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Friends" Type="Self.Friends" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Friends">
+        <PropertyRef Name="FriendFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Posts_ToUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Posts">
+        <PropertyRef Name="UserFK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WonderlandDBModelStoreContainer">
+    <EntitySet Name="Friends" EntityType="Self.Friends" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Friends_ToUser" Association="Self.FK_Friends_ToUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Friends_ToUserFriend" Association="Self.FK_Friends_ToUserFriend">
+      <End Role="User" EntitySet="User" />
+      <End Role="Friends" EntitySet="Friends" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Posts_ToUser" Association="Self.FK_Posts_ToUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="Posts" EntitySet="Posts" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

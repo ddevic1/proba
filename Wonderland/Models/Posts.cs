@@ -20,5 +20,9 @@ namespace Wonderland.Models
         public string Weather { get; set; }
         public string Location { get; set; }
         public int UserFK { get; set; }
+        public Nullable<double> Lat { get; set; }
+        public Nullable<double> Lng { get; set; }
+    
+        public virtual User User { get; set; }
     }
 }

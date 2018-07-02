@@ -5,6 +5,7 @@ import request from 'superagent';
 import { compose, withProps, lifecycle } from 'recompose';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker} from 'react-google-maps';
 import { StandaloneSearchBox } from 'react-google-maps/lib/components/places/StandaloneSearchBox';
+import SearchBar from '../SearchBar/SearchBar';
 
 const CLOUDINARY_UPLOAD_PRESET = 'n9wsbdne';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dykzjdkwy/upload';
@@ -39,6 +40,8 @@ const PlacesWithStandaloneSearchBox = compose(
                 },
                 onPlacesChanged: () => {
                     const places = refs.searchBox.getPlaces();
+
+                    this.props.text(places[0].formatted_address);
                     places.map(({ place_id, formatted_address, geometry: { location } }) =>
                         this.props.sendToMap(location.lat(), location.lng()),
 
@@ -53,7 +56,7 @@ const PlacesWithStandaloneSearchBox = compose(
     }),
     withScriptjs
 )(props =>
-    <div data-standalone-searchbox="">
+    <div data-standalone-searchbox="" style={{ display: "inline" }}>
         <StandaloneSearchBox
             ref={props.onSearchBoxMounted}
             bounds={props.bounds}
@@ -92,6 +95,11 @@ class Post extends Component {
         this.showMap = this.showMap.bind(this);
         this.onImageUpload = this.onImageUpload.bind(this);
         this.fileUpload = this.fileUpload.bind(this);
+        this.onCancelClick = this.onCancelClick.bind(this);
+        this.onPostClick = this.onPostClick.bind(this);
+        this.getText = this.getText.bind(this);
+        this.tagFriend = this.tagFriend.bind(this);
+        this.tagFriendFunction = this.tagFriendFunction.bind(this);
 
         this.state = {
             visina: "15px",
@@ -101,15 +109,20 @@ class Post extends Component {
             background: "beige",
             encodedWeatherString: "",
             decodedWeatherString: "",
-            locationPlace: <div></div>,
-            was: <div></div>,
-            lat: '',
-            lng: '',
+            locationPlace: '',
+            was: '',
+            lat: 0,
+            lng: 0,
             filess: [],
             uploadedFileCloudinaryUrl: '',
             first: true,
             second: false,
-            third: false
+            third: false,
+            place: "",
+            placeBool: false,
+            tagFriend: '',
+            friendBool: false,
+            friendName: ''
         }
       
     }
@@ -126,7 +139,7 @@ class Post extends Component {
             });
         if (emojis.indexOf(sequence) > -1) {
             if (this.state.recenica.indexOf("feeling") > -1)
-                novaRecenica = this.state.recenica.substr(this.state.recenica.indexOf("feeling"), 7) + " " + sequence + "," + this.state.recenica.substr(this.state.recenica.indexOf("feeling") + 7);
+                novaRecenica = this.state.recenica.substr(this.state.recenica.indexOf(" feeling"), 8) + " " + sequence + "," + this.state.recenica.substr(this.state.recenica.indexOf("feeling") + 8);
             else
                 novaRecenica = this.state.recenica + " feeling " + sequence;
             this.setState({
@@ -142,7 +155,8 @@ class Post extends Component {
                 'text/html');
             this.setState(
                 {
-                    decodedWeatherString: dom.body.textContent
+                    decodedWeatherString: dom.body.textContent,
+                    selectedWeather: weather[weather.indexOf(sequence)]
                 });
         }
           
@@ -153,7 +167,7 @@ class Post extends Component {
         if (this.state.visina==="15px")
             this.setState(
                 {
-                    visina: "-webkit-fill-available",
+                    visina: "370px",
                     big: "block",
                     small: "none",
                     background: "white"
@@ -161,10 +175,25 @@ class Post extends Component {
         
     }
 
+    getText(text) {
+        this.setState({
+            place: text,
+            placeBool: true,
+            locationPlace: <form className="inlineflex"> <i className="blue lrmargin">   in   </i>
+                {text}
+            </form>,
+            was: <i className="blue lrmargin">  was  </i>
+        });
+       
+    }
+
     addLocation(e) {
 
         this.setState({
-            locationPlace: <form className="inlineflex"> <i className="blue lrmargin">   in   </i> <PlacesWithStandaloneSearchBox sendToMap={this.showMap} /> </form>,
+            locationPlace: <form className="inlineflex"> <i className="blue lrmargin">   in   </i>
+                {!this.state.placeBool && < PlacesWithStandaloneSearchBox text={this.getText} sendToMap={this.showMap} />}
+                {this.state.placeBool && this.state.place}
+            </form>,
             was: <i className="blue lrmargin">  was  </i>
         });
 
@@ -216,6 +245,133 @@ class Post extends Component {
 
     }
 
+    onCancelClick(e) {
+        e.preventDefault();
+
+        this.setState({
+            visina: "15px",
+            big: "none",
+            small: "block",
+            recenica: " ",
+            background: "beige",
+            encodedWeatherString: "",
+            decodedWeatherString: "",
+            locationPlace: '',
+            was: <div></div>,
+            lat: '',
+            lng: '',
+            filess: [],
+            uploadedFileCloudinaryUrl: '',
+            first: true,
+            second: false,
+            third: false,
+            lat: 0,
+            lng: 0,
+            place: "",
+            placeBool: false,
+            tagFriend: ''
+        });
+    }
+
+    onPostClick(e) {
+        e.preventDefault();
+     
+        var post = new Object();
+        post.Sequence = this.state.recenica + " with " + this.state.friendName;
+        post.Location = this.state.place;
+        post.ImageURL = this.state.uploadedFileCloudinaryUrl;
+        post.Weather = this.state.selectedWeather;
+        post.UserFK = this.props.user.UserId;
+        post.Lat = this.state.lat;
+        post.Lng = this.state.lng;
+
+        if (post != null) {
+            $.when( $.ajax({
+                type: "POST",
+                url: "/default/AddPost",
+                data: JSON.stringify(post),
+                contentType: "application/json; charset=utf-8",
+               
+                success: function (response) {
+                   
+                }.bind(this),
+                failure: function (response) {
+                    alert("no success");
+                    
+                }.bind(this),
+                error: function (jqXHR, exception) {
+                    var msg = '';
+                    if (jqXHR.status === 0) {
+                        msg = 'Not connect.\n Verify Network.';
+                    } else if (jqXHR.status == 404) {
+                        msg = 'Requested page not found. [404]';
+                    } else if (jqXHR.status == 500) {
+                        msg = 'Internal Server Error [500].';
+                    } else if (exception === 'parsererror') {
+                        msg = 'Requested JSON parse failed.';
+                    } else if (exception === 'timeout') {
+                        msg = 'Time out error.';
+                    } else if (exception === 'abort') {
+                        msg = 'Ajax request aborted.';
+                    } else {
+                        msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                    }
+                    alert(msg);
+                }.bind(this)
+            })).then(function () {
+                console.log("poziva se");
+                    this.props.onPostPosted();
+                }.bind(this));
+        }  
+
+       
+
+        this.setState({
+            visina: "15px",
+            big: "none",
+            small: "block",
+            recenica: " ",
+            background: "beige",
+            encodedWeatherString: "",
+            decodedWeatherString: "",
+            locationPlace: '',
+            was: '',
+            lat: '',
+            lng: '',
+            filess: [],
+            uploadedFileCloudinaryUrl: '',
+            first: true,
+            second: false,
+            third: false,
+            lat: 0,
+            lng: 0,
+            place: "",
+            placeBool: false,
+            tagFriend: ''
+        });
+
+    }
+
+    tagFriend() {
+        this.setState({
+            tagFriend: <form className="inlineflex"> <i className="blue lrmargin">   with   </i>
+                {!this.state.friendBool && < SearchBar friends1={this.props.allUsers} loc="post" getClickedItem={this.tagFriendFunction} />}
+                {this.state.friendBool && this.state.taggedFriend}
+            </form>,
+            was: <i className="blue lrmargin">  was  </i>
+        });
+    }
+
+    tagFriendFunction(name) {
+        this.setState({
+            tagFriend: <form className="inlineflex"> <i className="blue lrmargin">   with   </i>
+                {name}
+            </form>,
+            was: <i className="blue lrmargin">  was  </i>,
+            friendName: name
+        });
+    }
+
     render() {
 
         var listaEmoji = [
@@ -259,13 +415,14 @@ class Post extends Component {
                         </div>
 
                         <div style={{ display: this.state.big, height: "-webkit-fill-available" }} className="whiteBcg gray full" >
-                            <div className="row ">
-                                <div className="col-md-11">
+                            <div className="row " style={{ marginTop: "-10px" }}>
+                                <div className="col-md-11" style={{ marginTop: "-20px" }}>
                                     <p className="moveUp inlineflex">
                                         {this.props.imeKorisnika}
                                         {this.state.was}
                                         {this.state.locationPlace}
                                         {this.state.recenica}
+                                        {this.state.tagFriend}
                                     </p>
                                        
                                 </div>
@@ -273,7 +430,7 @@ class Post extends Component {
                                     <p className="moveUp"> {this.state.decodedWeatherString} </p> 
                                 </div>
                             </div>
-                            <div className="row row33 whiteBcg" style={{ height: "-webkit-fill-available" }}>
+                            <div className="row row33 whiteBcg" style={{ height: "220px" }}>
                                 {this.state.filess.length === 0 && this.state.first && !this.state.second && !this.state.third &&
                                     <ContactForm imageUploaded={this.onImageUpload} filess={this.state.filess}></ContactForm>}
 
@@ -281,7 +438,7 @@ class Post extends Component {
                                     <div>
                                         {this.state.uploadedFileCloudinaryUrl === '' ? null :
                                             <div>
-                                                <img id="mjestoZaSliku" style={{ height: "-webkit-fill-available" }} src={this.state.uploadedFileCloudinaryUrl} />
+                                                <img id="mjestoZaSliku" style={{ height: "220px" }} src={this.state.uploadedFileCloudinaryUrl} />
                                             </div>
                                         }
                                     </div>
@@ -299,9 +456,7 @@ class Post extends Component {
                                     </MainMapComponent>
                                 }
                             </div>
-                            <div className="row row33 black" style={{ marginTop: "-10px"}}>
-
-
+                            <div className="row row33 black" >
                                 <div className="col-md-2">
                                     <Ikona name="place" class="black" data={[]} addLocationFun={this.addLocation}></Ikona>
                                 </div>
@@ -321,7 +476,17 @@ class Post extends Component {
                                     <Ikona class="black" name="wb_sunny" data={listaWeather} changeSequenceOriginal={this.changeSequenceOriginal1}></Ikona>
                                 </div>
                                 <div className="col-md-2">
-                                    <Ikona class="black" name="group" data={[]}></Ikona>
+                                    <Ikona class="black" name="group" tag={this.tagFriend} data={[]}></Ikona>
+                                </div>
+                            </div>
+                            <div className="row" style={{ marginTop: "10px" }}>
+                                <div className="col-md-3">
+                                    <Button className="btn-danger" onClick={(e) => this.onCancelClick(e)} id="btnCancel"> Cancel </Button>
+                                </div>
+                                <div className="col-md-6">
+                                </div>
+                                <div className="col-md-3">
+                                    <Button className="btn-success" onClick={(e) => this.onPostClick(e)} id="btnPost"> Post </Button>
                                 </div>
                             </div>
                         </div>
@@ -343,6 +508,7 @@ class Ikona extends Component {
         this.handleClick = this.handleClick.bind(this);
         this.changeSequence1 = this.changeSequence1.bind(this);
     }
+
     handleClick(e) {
         if (this.props.name === "mood" || this.props.name === "wb_sunny") {
             if (this.state.visible === "none")
@@ -358,8 +524,12 @@ class Ikona extends Component {
         else if (this.props.name === "place") {
             this.props.addLocationFun();
         }
+        else if (this.props.name === "group") {
+            this.props.tag();
+        }
         
     }
+
     changeSequence1(sequence) {
         this.setState({
             visible: "none"
@@ -367,6 +537,7 @@ class Ikona extends Component {
         var newSequence = "";
         this.props.changeSequenceOriginal(sequence);
     }
+
     render() {
         return (
             <span className={`${this.props.class}`} onClick={this.handleClick} >
@@ -440,8 +611,6 @@ class EmojiWeatherList extends Component {
     }
 }
 
-
-
 class ContactForm extends Component {
     constructor(props) {
         super(props);
@@ -508,7 +677,7 @@ class ContactForm extends Component {
                 <div style={{ display: this.state.visibleImg }}>
                     {this.state.uploadedFileCloudinaryUrl === '' ? null :
                         <div>
-                            <img id="mjestoZaSliku" style={{ height: "-webkit-fill-available"}} src={this.state.uploadedFileCloudinaryUrl} />
+                            <img id="mjestoZaSliku"  src={this.state.uploadedFileCloudinaryUrl} />
                         </div>
                     }
                 </div>

@@ -19,7 +19,7 @@ class Index extends React.Component {
             this.setState({
                 users: data
             });
-            
+            console.log(this.state.users);
         }.bind(this));
 
     }

@@ -4,12 +4,35 @@
     <EntitySetMapping Name="Posts">
       <EntityTypeMapping TypeName="WonderlandDBModel2.Posts">
         <MappingFragment StoreEntitySet="Posts">
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
           <ScalarProperty Name="PostId" ColumnName="PostId" />
           <ScalarProperty Name="Sequence" ColumnName="Sequence" />
           <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
           <ScalarProperty Name="Weather" ColumnName="Weather" />
           <ScalarProperty Name="Location" ColumnName="Location" />
           <ScalarProperty Name="UserFK" ColumnName="UserFK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Friends">
+      <EntityTypeMapping TypeName="WonderlandDBModel2.Friends">
+        <MappingFragment StoreEntitySet="Friends">
+          <ScalarProperty Name="FriendFK" ColumnName="FriendFK" />
+          <ScalarProperty Name="UserFK" ColumnName="UserFK" />
+          <ScalarProperty Name="FriendsId" ColumnName="FriendsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="WonderlandDBModel2.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

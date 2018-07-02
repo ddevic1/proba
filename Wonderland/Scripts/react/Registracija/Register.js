@@ -14,7 +14,7 @@ class Register extends Component {
 
     handleRegisterSubmit(e) {
         e.preventDefault();
-       
+        console.log({ "RegisterTarget": e.target });
         const data = new FormData(e.target);
         
         fetch('default/AddUser', {

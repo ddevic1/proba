@@ -14,7 +14,7 @@ class HeaderPocetna extends Component {
                     <Container fluid>
                         <div className="row">
                             <div className="col-md-5">
-                              < SearchBar friends1={this.props.friends}></SearchBar>
+                              < SearchBar friends1={this.props.users} loc = "header"></SearchBar>
                             </div>
                             <div className="col-md-4">
                                 <Ikona name="person" text="Profile"></Ikona>
